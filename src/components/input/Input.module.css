@@ -1,0 +1,18 @@
+.thumb {
+    display: flex;
+    gap: 8px;
+}
+
+.input {
+    width: 110vh;
+    border: 1px solid rgb(164, 164, 164);
+    border-radius: 10px;
+    padding: 10px 12px;
+}
+.input::placeholder {
+    color: rgb(126, 126, 126);
+}
+.input:hover,
+.input:focus  {
+    outline: none;
+}

@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    width: 1200px;
+    padding: 20px 15px;
+    margin: 0 auto;
+    gap: 10px;
+}
+
+.thumb {
+    display: flex;
+    gap: 100vh;
+}
