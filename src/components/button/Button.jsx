@@ -1,9 +1,9 @@
 import styles from './Button.module.css'
 
-export const Button = ({text}) => {
+export const Button = ({text, handleClick}) => {
     return (
         <>
-            <button type="button" className={styles.btn}>{text}</button>
+            <button onClick={handleClick} type="button" className={styles.btn}>{text}</button>
         </>
     )
 }
