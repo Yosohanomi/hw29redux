@@ -4,3 +4,10 @@ export const addTask = ({title, id}) => (
         payload: {title, id, isCompleted: false},
     }
 )
+
+export const deleteTask = (id) => (
+    {
+        type: "todoManager/deleteTask",
+        payload: id,
+    }
+)
