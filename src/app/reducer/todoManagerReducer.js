@@ -17,6 +17,8 @@ const todoManagerReducer = (state = initialState, actions) => {
             ]};
         case "todoManager/deleteTask":
             return {...state, tasks: state.tasks.filter((task) => task.id !== actions.payload)}
+        case "todoManager/completedTask":
+            return {...state, tasks: state.tasks.map((task) => task.id === actions.payload ? {...task, isCompleted: true} : task)}
         default:
             return state
     }

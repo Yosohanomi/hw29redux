@@ -11,3 +11,10 @@ export const deleteTask = (id) => (
         payload: id,
     }
 )
+
+export const completedTask = (id) => (
+    {
+        type: "todoManager/completedTask",
+        payload: id,
+    }
+)

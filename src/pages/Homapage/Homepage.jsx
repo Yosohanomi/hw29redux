@@ -3,8 +3,11 @@ import { Filter } from "../../components/filter/Filter"
 import { TasksStatus } from "../../components/taskStatus/TaskStatus"
 import styles from './Homepage.module.css'
 import { useDispatch, useSelector } from "react-redux"
-import { deleteTask } from "../../app/actions/todoManagerActions"
+import { completedTask, deleteTask } from "../../app/actions/todoManagerActions"
+import { useState } from "react"
 export const Homepage = () => {
+
+    const [filter, setFilter] = useState("all")
 
     const tasksList = useSelector((state) => state.tasks)
     const dispatcher= useDispatch()
@@ -12,20 +15,40 @@ export const Homepage = () => {
         dispatcher(deleteTask(id))
     }
 
+    const handleCompletedClick = (id) => {
+        dispatcher(completedTask(id))
+    }
+
+    const filteredList = tasksList.filter((task) => {
+            if(filter === "active") {
+                return !task.isCompleted
+            }
+            else if(filter === "completed") {
+                return task.isCompleted
+            }
+            else {
+                return true
+            }
+        });
+
     return (
         <div className={styles.container}>
             <div className={styles.thumb}>
                 <TasksStatus/>
-                <Filter/>
+                <Filter setFilter={setFilter}/>
             </div>
             <Input/>
             <div>
-                <ul>
+                <ul className={styles.list}>
                     {
-                        tasksList?.map((task) => (
-                            <li key={task.id}>
-                                <p>{task.title}</p>
-                                <button onClick={() => handleDeleteClick(task.id)}>Delete</button>
+                        filteredList?.map((task) => (
+                            <li className={styles.item} key={task.id}>
+                                <div className={task.isCompleted ? styles.completed : styles.active}>
+                                    <p>{task.title}</p>
+                                    <button className={styles.delete} onClick={() => handleDeleteClick(task.id)}></button>
+                                    <button className={styles.complete} onClick={() => handleCompletedClick(task.id)}></button>
+                                </div>
+                                
                             </li>
                         ))
                     }
