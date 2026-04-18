@@ -2,8 +2,7 @@ import { useState } from "react"
 import { Button } from "../button/Button"
 import styles from './Input.module.css'
 import { useDispatch } from "react-redux"
-import { addTask } from "../../app/actions/todoManagerActions"
-
+import { addTask } from "../../app/reducer/todoManagerReducer"
 export const Input = () => {
     const [inputInfo, setInputInfo] = useState("")
     const handleChange = (e) => {

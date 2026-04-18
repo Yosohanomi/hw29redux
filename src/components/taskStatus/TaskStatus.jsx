@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux'
 import styles from './TaskStatus.module.css'
 
 export const TasksStatus = () => {
-    const tasksList = useSelector((state) => state.tasks)
+    const tasksList = useSelector((state) => state.todoManager.tasks)
     const activeTasks = tasksList.filter((task) => !task.isCompleted)
     const completedTask = tasksList.filter((task) => task.isCompleted)
     return (

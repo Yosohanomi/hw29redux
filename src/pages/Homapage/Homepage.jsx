@@ -3,13 +3,14 @@ import { Filter } from "../../components/filter/Filter"
 import { TasksStatus } from "../../components/taskStatus/TaskStatus"
 import styles from './Homepage.module.css'
 import { useDispatch, useSelector } from "react-redux"
-import { completedTask, deleteTask } from "../../app/actions/todoManagerActions"
 import { useState } from "react"
+import { completedTask, deleteTask } from "../../app/reducer/todoManagerReducer"
+
 export const Homepage = () => {
 
     const [filter, setFilter] = useState("all")
 
-    const tasksList = useSelector((state) => state.tasks)
+    const tasksList = useSelector((state) => state.todoManager.tasks)
     const dispatcher= useDispatch()
     const handleDeleteClick = (id) => {
         dispatcher(deleteTask(id))

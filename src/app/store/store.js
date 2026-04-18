@@ -1,4 +1,8 @@
-import { createStore } from "redux";
-import todoManagerReducer from "../reducer/todoManagerReducer";
+import { configureStore } from "@reduxjs/toolkit";
+import todoManagerReducer from '../reducer/todoManagerReducer'
 
-export const store = createStore(todoManagerReducer)
+export const store = configureStore({
+    reducer:{
+        todoManager: todoManagerReducer
+    }
+})
