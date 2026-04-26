@@ -8,18 +8,19 @@ export const todoManagerSlice = createSlice({
             id: Date.now(),
             isCompleted: false
         }],
-        reducers: {
-            addTask: (state, action) => {
-                state.tasks.push(action.payload)
-            },
-            deleteTask: (state, action) => {
-                state.tasks = state.tasks.filter((task) => task.id !== action.payload)
-            },
-            completedTask: (state, action) => {
-                const task = state.tasks.find((el)=> el.id === action.payload)
-                if(task) {
-                    task.isCompleted = true
-                }
+        
+    },
+    reducers: {
+        addTask: (state, action) => {
+            state.tasks.push(action.payload)
+        },
+        deleteTask: (state, action) => {
+            state.tasks = state.tasks.filter((task) => task.id !== action.payload)
+        },
+        completedTask: (state, action) => {
+            const task = state.tasks.find((el)=> el.id === action.payload)
+            if(task) {
+                task.isCompleted = true
             }
         }
     }
